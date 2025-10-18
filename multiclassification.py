@@ -37,7 +37,7 @@ data = pd.DataFrame(d.data)
 data['target'] = d.target
 
 # plt.scatter(data[2], data[3], c=data['target'])    # see classes
-
+# plt.show()
 X = np.array(data.iloc[:, :-1])
 X = np.insert(X, 0, [1 for _ in range(X.shape[0])], axis=1)
 target = np.array(data['target'])

@@ -39,7 +39,7 @@ X = np.insert(X, 0, [1 for _ in range(442)], axis=1)
 # print(w_new)
 # np.save("weithAnal", w_new)
 
-w_new = np.load("weithAnal.npy")
+w_new = np.load("coefAnalytic.npy")
 
 table2 = pd.DataFrame({"Ответ": target, "Предсказание": X@w_new.T})
 table2["Ошибка"] = abs(table2["Ответ"] - table2["Предсказание"])
