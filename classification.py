@@ -33,8 +33,3 @@ data_pred = pd.DataFrame({"target":target, "preds":np.sign(X@w)})
 data_pred['equal'] = data_pred['target'] == data_pred['preds']
 print(data_pred)
 
-#Достроить график
-y = np.array(data['mean radius'])
-plt.scatter(data['mean radius'][:2], data['mean texture'][:2])
-plt.plot(data['mean radius'][:3], [y[0]*w[1], y[1]*w[2], w[0]], color='red')
-plt.show()
