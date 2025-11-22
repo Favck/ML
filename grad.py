@@ -12,32 +12,30 @@ X = np.array(table.iloc[:,:-1])
 
 target = np.array(table['target'])
 
-# tolerance = 10**(-6)
-# alpha = 0.1
+tolerance = 10**(-6)
+alpha = 0.1
 
-# w = np.array(np.random.rand(11)).T
-# w_new = np.array([0,0,0,0,0,0,0,0,0,0,0]).T
-# # def lossFunc(w):
-# #     return (1/len(w))*((X@w - target)@(X @ w - target))
+w = np.array(np.random.rand(11)).T
+w_new = np.array([0,0,0,0,0,0,0,0,0,0,0]).T
 
-# def grad(err):
-#     return (2/len(target))*(X.T@err)
+def grad(err):
+    return (2/len(target))*(X.T@err)
 
 X = np.insert(X, 0, [1 for _ in range(442)], axis=1)
 
-# t=0
-# while np.linalg.norm(w_new-w) > tolerance:
-#     f = X.dot(w) # Предсказание
-#     err = f - target  # Ошибка
-#     if t>0:
-#         w=w_new
-#     w_new = w - alpha*grad(err)
-#     t+=1
+t=0
+while np.linalg.norm(w_new-w) > tolerance:
+    f = X.dot(w) # Предсказание
+    err = f - target  # Ошибка
+    if t>0:
+        w=w_new
+    w_new = w - alpha*grad(err)
+    t+=1
 
-# print(t)
-# w_new = np.load("weithAnal.npy")
-# print(w_new)
-# np.save("weithAnal", w_new)
+print(t)
+w_new = np.load("weithAnal.npy")
+print(w_new)
+np.save("weithAnal", w_new)
 
 w_new = np.load("coefAnalytic.npy")
 
@@ -49,4 +47,5 @@ table2.to_csv("tableAnalgrad")
 plt.scatter(table2["Ответ"], table2["Ответ"], color="red")
 plt.scatter(table2["Ответ"], table2["Предсказание"], color='blue')
 plt.grid(True)
+
 plt.show()
